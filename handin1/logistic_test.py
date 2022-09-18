@@ -82,7 +82,7 @@ if __name__=='__main__':
     parser = ArgumentParser()
     parser.add_argument('-lr', dest='lr', type=float, default=-1)
     parser.add_argument('-bs', type=int, dest='batch_size', default=-1)
-    parser.add_argument('-epochs', dest='epochs', type=int, default=-1)    
+    parser.add_argument('-epochs', dest='epochs', type=int, default=-1)
     args = parser.parse_args()
     print('vars args', vars(args))
     kwargs = {}

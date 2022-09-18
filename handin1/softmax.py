@@ -24,6 +24,8 @@ def softmax(X):
     """
     res = np.zeros(X.shape)
     ### YOUR CODE HERE
+    row_max = np.max(X, axis=1, keepdims=True)
+    res = np.exp(X - row_max - np.log(np.sum(np.exp(X - row_max), axis=1, keepdims=True)))
     ### END CODE
     return res
 
@@ -46,23 +48,26 @@ class SoftmaxClassifier():
         self.W = None
         
     def cost_grad(self, X, y, W):
-        """ 
-        Compute the average negative log likelihood cost and the gradient under the softmax model 
+        """
+        Compute the average negative log likelihood cost and the gradient under the softmax model
         using data X, Y and weight matrix W.
-        
+
         the functions np.log, np.nonzero, np.sum, np.dot (@), may come in handy
         Args:
            X: numpy array shape (n, d) float - the data each row is a data point
            y: numpy array shape (n, ) int - target values in 0,1,...,k-1
            W: numpy array shape (d x K) float - weight matrix
         Returns:
-            totalcost: Average Negative Log Likelihood of w 
-            gradient: The gradient of the average Negative Log Likelihood at w 
+            totalcost: Average Negative Log Likelihood of w
+            gradient: The gradient of the average Negative Log Likelihood at w
         """
         cost = np.nan
         grad = np.zeros(W.shape)*np.nan
         Yk = one_in_k_encoding(y, self.num_classes) # may help - otherwise you may remove it
         ### YOUR CODE HERE
+        n, d = X.shape
+        cost = - np.mean(np.log(np.sum(Yk * softmax(X @ W), axis=1)))
+        grad = - X.transpose() @ (Yk - softmax(X @ W)) / n
         ### END CODE
         return cost, grad
 
@@ -84,9 +89,27 @@ class SoftmaxClassifier():
            W: numpy array shape (d, K) learned weight vector matrix  W
            history: list/np.array len epochs - value of cost function after every epoch. You know for plotting
         """
-        if W is None: W = np.zeros((X.shape[1], self.num_classes))
+        if W is None:
+            W = np.random.rand(X.shape[1], self.num_classes)
         history = []
+        best_cost = np.inf
+        best_W = None
+        n, d = X.shape
         ### YOUR CODE HERE
+        for epoch in range(epochs):
+            permutation = np.random.permutation(np.arange(X.shape[0]))
+            X_permuted = X[permutation, :]
+            Y_permuted = Y[permutation]
+            for batch in range(0, n, batch_size):
+                x = X_permuted[batch:batch+batch_size, :]
+                y = Y_permuted[batch:batch+batch_size]
+                cost, grad = self.cost_grad(x, y, W)
+                W = W - grad
+            cost, grad = self.cost_grad(X, Y, W)
+            if cost < best_cost:
+                best_cost = cost
+                best_W = W
+            history.append(cost)
         ### END CODE
         self.W = W
         self.history = history
@@ -103,6 +126,7 @@ class SoftmaxClassifier():
         """
         out = 0
         ### YOUR CODE HERE
+        out = np.mean(self.predict(X) == Y)
         ### END CODE
         return out
 
@@ -115,7 +139,8 @@ class SoftmaxClassifier():
            out: np.array shape (n, ) - prediction on each data point (number in 0,1,..., num_classes-1)
         """
         out = None
-        ### YOUR CODE HERE   
+        ### YOUR CODE HERE
+        out = np.argmax(softmax(X @ self.W), axis=1)
         ### END CODE
         return out
 
@@ -154,8 +179,15 @@ def test_grad():
     numerical_grad_check(f, w)
     print('Test Success')
 
-    
+def test_fit():
+    n, d, k = 10, 3, 5
+    X = np.random.rand(n, d)
+    y = np.random.randint(k, size=n)
+    classifier = SoftmaxClassifier(k)
+    classifier.fit(X, y)
+
 if __name__ == "__main__":
-    test_encoding()
-    test_softmax()
-    test_grad()
+    pass
+    #test_encoding()
+    #test_softmax()
+    #test_grad()

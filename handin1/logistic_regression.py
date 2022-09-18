@@ -1,3 +1,4 @@
+import matplotlib.pyplot as plt
 import numpy as np
 from h1_util import numerical_grad_check
 
@@ -19,9 +20,7 @@ def logistic(z):
     assert logi.shape == z.shape
     return logi
 
-
 class LogisticRegressionClassifier():
-
     def __init__(self):
         self.w = None
 
@@ -40,18 +39,10 @@ class LogisticRegressionClassifier():
            cost: scalar: the average negative log likelihood for logistic regression with data X, y 
            grad: np.array shape(d, ) gradient of the average negative log likelihood at w 
         """
-        cost = 0
-        grad = np.zeros(w.shape)
-        ### YOUR CODE HERE
-        w = np.reshape(w, (w.size, 1))
-        y = np.reshape(y, (y.size, 1))
-        cost = np.mean(np.log(1 + np.exp(- y * X @ w)))
-        grad = - np.mean(y * X * logistic(- y * X @ w), axis=0, keepdims=True)
-        grad = np.reshape(grad, (grad.size, 1))
-        ### END CODE
-        assert grad.shape == w.shape
-        return cost, grad
 
+        cost = np.mean(np.log(1 + np.exp(-X @ w * y)))
+        grad = np.mean(-y * X.transpose() * logistic(-X @ w * y), axis=1)
+        return cost, grad
 
     def fit(self, X, y, w=None, lr=0.1, batch_size=16, epochs=10):
         """
@@ -74,13 +65,25 @@ class LogisticRegressionClassifier():
            w: numpy array shape (d,) learned weight vector w
            history: list/np.array len epochs - value of loss function (in-sample error) after every epoch. Used for plotting
         """
-        if w is None: w = np.zeros(X.shape[1])
-        history = []        
-        ### YOUR CODE HERE 
+        if w is None:
+            w = np.zeros(X.shape[1])
+        history = []
+        ### YOUR CODE HERE
+        for _ in range(epochs):
+            permutation = np.random.permutation(np.arange(X.shape[0]))
+            X_permuted = X[permutation, :]
+            y_permuted = y[permutation]
+            for idx_start in np.arange(0, X.shape[0], batch_size):
+                idx_stop = idx_start + batch_size
+                X_batch = X_permuted[idx_start:idx_stop, :]
+                y_batch = y_permuted[idx_start:idx_stop]
+                _, grad = self.cost_grad(X_batch, y_batch, w)
+                w += -lr * grad
+            cost, _ = self.cost_grad(X, y, w)
+            history.append(cost)
         ### END CODE
         self.w = w
         self.history = history
-
 
     def predict(self, X):
         """ Classify each data element in X.
@@ -95,6 +98,7 @@ class LogisticRegressionClassifier():
         """
         out = np.ones(X.shape[0])
         ### YOUR CODE HERE
+        out = logistic(X @ self.w)
         ### END CODE
         return out
     
@@ -111,11 +115,10 @@ class LogisticRegressionClassifier():
         """
         s = 0
         ### YOUR CODE HERE
+        s, _ = self.cost_grad(X, y, self.w)
         ### END CODE
         return s
-        
 
-    
 def test_logistic():
     print('*'*5, 'Testing logistic function')
     a = np.array([0, 1, 2, 3])
@@ -123,7 +126,6 @@ def test_logistic():
     target = np.array([ 0.5, 0.73105858, 0.88079708, 0.95257413])
     assert np.allclose(lg, target), 'Logistic Mismatch Expected {0} - Got {1}'.format(target, lg)
     print('Test Success!')
-
     
 def test_cost():
     print('*'*5, 'Testing Cost Function')
@@ -137,7 +139,6 @@ def test_cost():
     assert np.allclose(cost, target), 'Cost Function Error:  Expected {0} - Got {1}'.format(target, cost)
     print('Test Success')
 
-    
 def test_grad():
     print('*'*5, 'Testing  Gradient')
     X = np.array([[1.0, 0.0], [1.0, 1.0], [2.0, 3.0]])    
@@ -148,12 +149,8 @@ def test_grad():
     f = lambda z: lr.cost_grad(X, y, w=z)
     numerical_grad_check(f, w)
     print('Test Success')
-
-
     
 if __name__ == '__main__':
     test_logistic()
     test_cost()
     test_grad()
-    
-    
