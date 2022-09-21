@@ -38,8 +38,6 @@ class PerceptronClassifier():
         Saves:
         w: numpy array shape (d,) normal vector of the best hyperplane found for separating X, y
         may not seperate the data fully
-
-
         """
         if w is None:
             w = np.zeros(X.shape[1])
@@ -218,7 +216,6 @@ def plot_data():
         axes[i - 1].set_title("Data Set %d" % i)
     plt.show()
 
-
 def plot_square_transform():
     """ Visualize the square transform """
     D = load_data()
@@ -237,7 +234,6 @@ def plot_square_transform():
     axes[1].plot(x, y, 'r--', linewidth=4)
     axes[1].set_title('Data Set 1 - Transformed - Decision boundary', fontsize=16)
     plt.show()
-
 
 def contour_test():
     """ Test contour algorithm """

@@ -13,16 +13,14 @@ def logistic(z):
     Returns:
        logi: numpy array shape (d,) each entry transformed by the logistic function 
     """
-    logi = np.zeros(z.shape)
-    ### YOUR CODE HERE
     logi = 1 / (1 + np.exp(-z))
-    ### END CODE
     assert logi.shape == z.shape
     return logi
 
 class LogisticRegressionClassifier():
     def __init__(self):
         self.w = None
+        self.history = []
 
     def cost_grad(self, X, y, w):
         """
@@ -39,7 +37,6 @@ class LogisticRegressionClassifier():
            cost: scalar: the average negative log likelihood for logistic regression with data X, y 
            grad: np.array shape(d, ) gradient of the average negative log likelihood at w 
         """
-
         cost = np.mean(np.log(1 + np.exp(-X @ w * y)))
         grad = np.mean(-y * X.transpose() * logistic(-X @ w * y), axis=1)
         return cost, grad
@@ -96,10 +93,7 @@ class LogisticRegressionClassifier():
            not a probability between 0 and 1. You should thus return the most likely class!
 
         """
-        out = np.ones(X.shape[0])
-        ### YOUR CODE HERE
-        out = logistic(X @ self.w)
-        ### END CODE
+        out = 2 * np.round(logistic(X @ self.w)) - 1
         return out
     
     def score(self, X, y):
@@ -111,13 +105,9 @@ class LogisticRegressionClassifier():
 
         Returns: 
            s: float, number of correct predictions divided by n. NOTE: This is accuracy, not in-sample error!
-
         """
-        s = 0
-        ### YOUR CODE HERE
-        s, _ = self.cost_grad(X, y, self.w)
-        ### END CODE
-        return s
+        score = np.mean(self.predict(X) == y)
+        return score
 
 def test_logistic():
     print('*'*5, 'Testing logistic function')

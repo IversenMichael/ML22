@@ -82,6 +82,7 @@ def digits_visualize(epochs=1, batch_size=64, lr=0.01):
     fig, ax = plt.subplots()
     ax.imshow(rs2.reshape(28, -1, order='F'), cmap='bone')
     ax.set_title('digits weight vector visualized')
+    fig.tight_layout()
     export_fig(fig, 'softmax_weight_vector.png')
     plt.show()
 

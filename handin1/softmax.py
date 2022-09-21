@@ -22,7 +22,6 @@ def softmax(X):
     Returns:
         res: numpy array shape (n, d)  where each row is the softmax transformation of the corresponding row in X i.e res[i, :] = softmax(X[i, :])
     """
-    res = np.zeros(X.shape)
     ### YOUR CODE HERE
     row_max = np.max(X, axis=1, keepdims=True)
     res = np.exp(X - row_max - np.log(np.sum(np.exp(X - row_max), axis=1, keepdims=True)))
@@ -42,7 +41,6 @@ def one_in_k_encoding(vec, k):
     return enc
     
 class SoftmaxClassifier():
-
     def __init__(self, num_classes):
         self.num_classes = num_classes
         self.W = None
@@ -61,16 +59,11 @@ class SoftmaxClassifier():
             totalcost: Average Negative Log Likelihood of w
             gradient: The gradient of the average Negative Log Likelihood at w
         """
-        cost = np.nan
-        grad = np.zeros(W.shape)*np.nan
         Yk = one_in_k_encoding(y, self.num_classes) # may help - otherwise you may remove it
-        ### YOUR CODE HERE
         n, d = X.shape
         cost = - np.mean(np.log(np.sum(Yk * softmax(X @ W), axis=1)))
         grad = - X.transpose() @ (Yk - softmax(X @ W)) / n
-        ### END CODE
         return cost, grad
-
 
     def fit(self, X, Y, W=None, lr=0.01, epochs=10, batch_size=16):
         """
@@ -82,7 +75,7 @@ class SoftmaxClassifier():
            Y: numpy array shape (n,) int - target labels numbers in {0, 1,..., k-1}
            W: numpy array shape (d x K)
            lr: scalar - initial learning rate
-           batchsize: scalar - size of mini-batch
+           batch_size: scalar - size of mini-batch
            epochs: scalar - number of iterations through the data to use
 
         Sets: 
@@ -93,9 +86,7 @@ class SoftmaxClassifier():
             W = np.random.rand(X.shape[1], self.num_classes)
         history = []
         best_cost = np.inf
-        best_W = None
         n, d = X.shape
-        ### YOUR CODE HERE
         for epoch in range(epochs):
             permutation = np.random.permutation(np.arange(X.shape[0]))
             X_permuted = X[permutation, :]
@@ -104,16 +95,14 @@ class SoftmaxClassifier():
                 x = X_permuted[batch:batch+batch_size, :]
                 y = Y_permuted[batch:batch+batch_size]
                 cost, grad = self.cost_grad(x, y, W)
-                W = W - grad
+                W = W - lr * grad
             cost, grad = self.cost_grad(X, Y, W)
             if cost < best_cost:
                 best_cost = cost
                 best_W = W
             history.append(cost)
-        ### END CODE
         self.W = W
         self.history = history
-        
 
     def score(self, X, Y):
         """ Compute accuracy of classifier on data X with labels Y
@@ -139,6 +128,7 @@ class SoftmaxClassifier():
            out: np.array shape (n, ) - prediction on each data point (number in 0,1,..., num_classes-1)
         """
         out = None
+
         ### YOUR CODE HERE
         out = np.argmax(softmax(X @ self.W), axis=1)
         ### END CODE
@@ -187,7 +177,6 @@ def test_fit():
     classifier.fit(X, y)
 
 if __name__ == "__main__":
-    pass
-    #test_encoding()
-    #test_softmax()
-    #test_grad()
+    test_encoding()
+    test_softmax()
+    test_grad()

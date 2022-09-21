@@ -34,7 +34,7 @@ def export_fig(fig, name):
         os.makedirs(result_path)
     
     my_path = os.path.join(result_path, name)
-    fig.savefig(my_path)
+    fig.savefig(my_path, bbox_inches='tight')
 
 
 def numerical_grad_check(f, x):

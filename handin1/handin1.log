@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.3) (preloaded format=pdflatex 2022.7.4)  14 SEP 2022 14:46
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.3) (preloaded format=pdflatex 2022.7.4)  19 SEP 2022 14:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -115,12 +115,27 @@ File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package color Info: Driver file: pdftex.def on input line 149.
 )
+(C:\Users\au544901\AppData\Local\Programs\MiKTeX\tex/latex/lipsum\lipsum.sty
+(C:\Users\au544901\AppData\Local\Programs\MiKTeX\tex/latex/l3packages/l3keys2e\
+l3keys2e.sty
+(C:\Users\au544901\AppData\Local\Programs\MiKTeX\tex/latex/l3kernel\expl3.sty
+Package: expl3 2022-02-24 L3 programming layer (loader) 
+
 (C:\Users\au544901\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-
 pdftex.def
 File: l3backend-pdftex.def 2022-02-07 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count270
 \l__pdf_internal_box=\box52
-) (handin1.aux)
+))
+Package: l3keys2e 2022-01-12 LaTeX2e option processing using LaTeX3 keys
+)
+Package: lipsum 2021-09-20 v2.7 150 paragraphs of Lorem Ipsum dummy text
+\g__lipsum_par_int=\count271
+\l__lipsum_a_int=\count272
+\l__lipsum_b_int=\count273
+
+(C:\Users\au544901\AppData\Local\Programs\MiKTeX\tex/latex/lipsum\lipsum.ltd.te
+x)) (handin1.aux)
 \openout1 = `handin1.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 41.
@@ -141,16 +156,16 @@ LaTeX Font Info:    ... okay on input line 41.
 (C:\Users\au544901\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf
 .mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count271
+\scratchcounter=\count274
 \scratchdimen=\dimen153
 \scratchbox=\box53
-\nofMPsegments=\count272
-\nofMParguments=\count273
+\nofMPsegments=\count275
+\nofMParguments=\count276
 \everyMPshowfont=\toks19
-\MPscratchCnt=\count274
+\MPscratchCnt=\count277
 \MPscratchDim=\dimen154
-\MPnumerator=\count275
-\makeMPintoPDFobject=\count276
+\MPnumerator=\count278
+\makeMPintoPDFobject=\count279
 \everyMPtoPDFconversion=\toks20
 )
 (C:\Users\au544901\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopd
@@ -163,7 +178,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 s.cfg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
-\c@lstlisting=\count277
+\c@lstlisting=\count280
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -222,36 +237,62 @@ File: lstlang1.sty 2020/03/24 1.8d listings language file
 ) [1
 
 {C:/Users/au544901/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
-[2 <./logreg_text_cost_per_epoch.png>] [3] (handin1.aux) ) 
+[2 <./logreg_text_cost_per_epoch.png>]
+<softmax_cost_per_epoch.png, id=23, 462.528pt x 346.896pt>
+File: softmax_cost_per_epoch.png Graphic file (type png)
+<use softmax_cost_per_epoch.png>
+Package pdftex.def Info: softmax_cost_per_epoch.png  used on input line 133.
+(pdftex.def)             Requested size: 245.2399pt x 183.9334pt.
+<softmax_wine_cost_per_epoch.png, id=24, 462.528pt x 346.896pt>
+File: softmax_wine_cost_per_epoch.png Graphic file (type png)
+<use softmax_wine_cost_per_epoch.png>
+Package pdftex.def Info: softmax_wine_cost_per_epoch.png  used on input line 13
+4.
+(pdftex.def)             Requested size: 245.2399pt x 183.9334pt.
+<softmax_weight_vector.png, id=25, 455.301pt x 89.6148pt>
+File: softmax_weight_vector.png Graphic file (type png)
+<use softmax_weight_vector.png>
+Package pdftex.def Info: softmax_weight_vector.png  used on input line 141.
+(pdftex.def)             Requested size: 455.29988pt x 89.61458pt.
+ [3 <./softmax_cost_per_epoch.png> <./softmax_wine_cost_per_epoch.png>]
+LaTeX Font Info:    Trying to load font information for OML+cmr on input line 1
+75.
+
+(C:\Users\au544901\AppData\Local\Programs\MiKTeX\tex/latex/base\omlcmr.fd
+File: omlcmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10> not available
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 175.
+
+[4 <./softmax_weight_vector.png>] [5] (handin1.aux) ) 
 Here is how much of TeX's memory you used:
- 3864 strings out of 478582
- 57638 string characters out of 2842929
- 568283 words of memory out of 3000000
- 22043 multiletter control sequences out of 15000+600000
- 475229 words of font info for 47 fonts, out of 8000000 for 9000
+ 4374 strings out of 478582
+ 70223 string characters out of 2842929
+ 672052 words of memory out of 3000000
+ 22538 multiletter control sequences out of 15000+600000
+ 474506 words of font info for 45 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,7n,62p,231b,1627s stack positions out of 10000i,1000n,20000p,200000b,80000s
-{C:/Users/au544901/Ap
-pData/Local/Programs/MiKTeX/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<C:/Users
-/au544901/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.p
-fb><C:/Users/au544901/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts
-/cm/cmbx12.pfb><C:/Users/au544901/AppData/Local/Programs/MiKTeX/fonts/type1/pub
-lic/amsfonts/cm/cmmi10.pfb><C:/Users/au544901/AppData/Local/Programs/MiKTeX/fon
-ts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/au544901/AppData/Local/Programs
-/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/au544901/AppData/Loc
-al/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/au544901/
-AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users
-/au544901/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.p
-fb><C:/Users/au544901/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts
-/cm/cmsy7.pfb><C:/Users/au544901/AppData/Local/Programs/MiKTeX/fonts/type1/publ
-ic/amsfonts/cm/cmti10.pfb><C:/Users/au544901/AppData/Local/Programs/MiKTeX/font
-s/type1/public/cm-super/sfrm1000.pfb><C:/Users/au544901/AppData/Local/Programs/
-MiKTeX/fonts/type1/public/cm-super/sfti1000.pfb><C:/Users/au544901/AppData/Loca
-l/Programs/MiKTeX/fonts/type1/public/txfonts/t1xbtt.pfb><C:/Users/au544901/AppD
-ata/Local/Programs/MiKTeX/fonts/type1/public/txfonts/t1xtt.pfb>
-Output written on handin1.pdf (3 pages, 180573 bytes).
+ 68i,7n,77p,384b,1627s stack positions out of 10000i,1000n,20000p,200000b,80000s
+{C:/Users/au544901/AppData
+/Local/Programs/MiKTeX/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<C:/Users/au54
+4901/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C
+:/Users/au544901/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/c
+mbx12.pfb><C:/Users/au544901/AppData/Local/Programs/MiKTeX/fonts/type1/public/a
+msfonts/cm/cmmi10.pfb><C:/Users/au544901/AppData/Local/Programs/MiKTeX/fonts/ty
+pe1/public/amsfonts/cm/cmmi7.pfb><C:/Users/au544901/AppData/Local/Programs/MiKT
+eX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/au544901/AppData/Local/Pr
+ograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/au544901/AppDa
+ta/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/au5
+44901/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:
+/Users/au544901/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cm
+sy10.pfb><C:/Users/au544901/AppData/Local/Programs/MiKTeX/fonts/type1/public/am
+sfonts/cm/cmsy7.pfb><C:/Users/au544901/AppData/Local/Programs/MiKTeX/fonts/type
+1/public/cm-super/sfrm1000.pfb><C:/Users/au544901/AppData/Local/Programs/MiKTeX
+/fonts/type1/public/txfonts/t1xbtt.pfb><C:/Users/au544901/AppData/Local/Program
+s/MiKTeX/fonts/type1/public/txfonts/t1xtt.pfb>
+Output written on handin1.pdf (5 pages, 268115 bytes).
 PDF statistics:
- 86 PDF objects out of 1000 (max. 8388607)
+ 93 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 21 words of extra memory for PDF output out of 10000 (max. 10000000)
 
