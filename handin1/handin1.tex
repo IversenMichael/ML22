@@ -3,7 +3,8 @@
 \usepackage{listings}
 \usepackage[left=2cm, right=2cm]{geometry}
 \title{Hand-in 1}
-\author{Michael Iversen}
+\author{Michael Iversen\\
+Student ID: 201505099}
 
 % Default fixed font does not support bold face
 \DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{10} % for bold
@@ -44,7 +45,8 @@
 	\subsection*{Code}
 	\subsubsection*{Summary and results}
 	Figure \ref{fig:logreg} shows the insample error as a function of epochs when applying the mini-batch gradient descent algorithm.
-	After $50$ epochs the insample accuracy is $\mathrm{score}_\mathrm{in} = 0.976$ and the test accuracy is $\mathrm{score}_\mathrm{test} = 0.956$.
+	As expected, the insample error slowly decreases as a function of epochs and eventually saturates.
+	After $50$ epochs the insample accuracy is $\mathrm{Acc}_\mathrm{in} = 0.976$ and the test accuracy is $\mathrm{Acc}_\mathrm{test} = 0.956$.
 	\begin{figure}
 		\centering
 		\includegraphics[width=0.5\textwidth]{logreg_text_cost_per_epoch.png}
@@ -96,7 +98,7 @@ def fit(self, X, y, w=None, lr=0.1, batch_size=16, epochs=10):
 	As discussed above, the time complexity of computing $X @ w * y$ is $O(nd)$.
 	Applying the function $logistic(\cdot)$ to the array $X @ w * y$ is $O(n)$.
 	Next, $logistic(-X @ w * y)$ is broadcast to size $d \times n$ and multiplied elementwise with $y * X.transpose()$ in $O(nd)$ time.
-	Finally, the gradient is obtained by averaging the elements in each row with takes $O(nd)$ time.
+	Finally, the gradient is obtained by averaging the elements in each row which takes $O(nd)$ time.
 	In total, the gradient is computed in $O(nd)$ time.
 	
 	We investigate the running time of the mini-batch gradient descent algorithm.
@@ -111,20 +113,18 @@ def fit(self, X, y, w=None, lr=0.1, batch_size=16, epochs=10):
 	
 	\subsubsection*{Sanity check}
 	If the pixels in all images are randomly permuted (in the same way), I expect the classifier will perform as good as without the permutation.
-	If the features are simply the rgb-values of all pixels, then our model does not use any information about the spatial location of each pixel. Hence, the performance is not affected by destroying the locality information by a permutation.
+	If the features are simply the rgb-values of each pixel, then our model does not use any information about the spatial location of each pixel. Hence, the performance is not affected by destroying the locality information by a permutation.
 	If $\omega$ is an optimal model before the permutation, then $\omega' = \mathrm{P}(\omega)$ is an optimal model for the permuted data where $\mathrm{P}(\cdot)$ is the permutation of the pixels.
 	
 	\subsubsection*{Linearly separable data}
-	When the data is linearly separable, there exists a model $\omega$ which perfectly classifies all data.
-	The gradient descent algorithm finds this optimal model unless it gets stuck in a local minimum.
-	
+	When the data is linearly separable, the gradient descent algorithm finds weights so the insample error is very small $\mathrm{E_{in}}(w) = \frac{1}{n}\sum_{i=1}^n \mathrm{ln}(1 + e^{-y_i w^T x_i}) \approx 0$. Inspecting this expression, we see the optimal weights must cause the argument of the exponential function to be very large and negative for all data points, i.e. $y_i w^T x_i \gg 1$ for all $i$. These considerations yields the following interpretation of the optimal weights: for all data points $i$ with $y_i = 1$, the inner product between $w$ and the corresponding $x_i$ is very large and positive. Similarly, for all data points $i$ with $y_i = -1$, the inner product between $w$ and $x_i$ is very large and negative. One may think of $w$ ``pointing'' in the direction of all $x_i$ with $y_i=1$ and ``pointing'' in the opposite direction to all $x_i$ with $y_i = -1$.
 \section*{PART II: Softmax}
 \subsection*{Code}
 \subsubsection*{Summary and results}
 We test the code on two datasets: wine and written digits.
-For the wine data set, the model reaches an insample accuracy of $1$ and test score $0.978$. The build-in python implementation of softmax gives similar results.
+For the wine data set, the model reaches an insample accuracy of $\mathrm{Acc_{in}} = 1$ and test accuracy $\mathrm{Acc_{test}} = 0.978$. The build-in python implementation of softmax gives similar results.
 
-When testing on the digit dataset, the model achieves an insample score $0.918$ and test score $0.920$.
+When testing on the digit dataset, the model achieves an insample accuracy $\mathrm{Acc_{in}} = 0.918$ and test accuracy $\mathrm{Acc_{test}} = 0.920$.
 I expect the softmax model to perform better on the digit data set if the features are transformed to exploit any information about locality present in the data set.
 
 The insample error for the wine and digit data sets are illustrated in figure \ref{fig:softmax}.
@@ -159,8 +159,6 @@ def fit(self, X, Y, W=None, lr=0.01, epochs=10, batch_size=16):
 	if W is None:
 		W = np.random.rand(X.shape[1], self.num_classes)
 	history = []
-	best_cost = np.inf
-	best_W = None
 	n, d = X.shape
 	for epoch in range(epochs):
 		permutation = np.random.permutation(np.arange(X.shape[0]))
@@ -169,16 +167,19 @@ def fit(self, X, Y, W=None, lr=0.01, epochs=10, batch_size=16):
 		for batch in range(0, n, batch_size):
 			x = X_permuted[batch:batch+batch_size, :]
 			y = Y_permuted[batch:batch+batch_size]
-			cost, grad = self.cost_grad(x, y, W)
+			_, grad = self.cost_grad(x, y, W)
 			W = W - lr * grad
-		cost, grad = self.cost_grad(X, Y, W)
-		if cost < best_cost:
-			best_cost = cost
-			best_W = W
+		cost, _ = self.cost_grad(X, Y, W)
 		history.append(cost)
 	self.W = W
 	self.history = history
 \end{python}
-\subsection*{Theory}	
+\subsection*{Theory}
+We investigate the time complexity of the ``$fit$'' function in the softmax model.
+The analysis is similar to the discussion for the logistic regression model.
+We start by inspecting the ``$cost\_grad$'' function.
+The computation of both cost and gradient is dominated by the matrix product $X @ W$ which takes $O(ndK)$ for $n$ data points with $d$ weights and $K$ classes.
+The outermost loop in the ``$fit$'' function executes the inside code $epochs$ times and the innermost loop executes $n/batch\_size$ times. Finally, the cost and gradient is calculated for $batch\_size$ data points with $d$ weights in $O(d \cdot batch\_size \cdot K)$ time.
+The total time complexity is therefore $O(epochs \cdot n d K).$
 	
 \end{document}

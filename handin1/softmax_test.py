@@ -10,8 +10,6 @@ from h1_util import export_fig, print_score, load_digits_train_data, load_digits
 from argparse import ArgumentParser
 
 
-
-
 def wine_test(epochs=200, batch_size=16, lr=0.1, normalize=True):
     print('wine test: params - epochs {0}, batch_size: {1}, learning rate: {2}'.format(epochs, batch_size, lr))
     features, target = load_wine(return_X_y=True)
@@ -58,6 +56,7 @@ def digits_test(epochs=10, batch_size=32, lr=0.05):
     export_fig(fig, 'softmax_cost_per_epoch.png')
     plt.show()
 
+
 def show_digits(grid=(4, 4)):
     X_train, y_train = load_digits_train_data()
     fig, axes = plt.subplots(grid[0], grid[1])
@@ -78,13 +77,14 @@ def digits_visualize(epochs=1, batch_size=64, lr=0.01):
     sc.fit(X_train, y_train, epochs=epochs, batch_size=batch_size, lr=lr)    
     w = sc.W
     rs = w.reshape(28, 28, 10, order='F')
-    rs2 = np.transpose(rs, axes=[1,0,2])
+    rs2 = np.transpose(rs, axes=[1, 0, 2])
     fig, ax = plt.subplots()
     ax.imshow(rs2.reshape(28, -1, order='F'), cmap='bone')
     ax.set_title('digits weight vector visualized')
     fig.tight_layout()
     export_fig(fig, 'softmax_weight_vector.png')
     plt.show()
+
 
 if __name__ == '__main__':
     parser = ArgumentParser()

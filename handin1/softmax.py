@@ -83,9 +83,8 @@ class SoftmaxClassifier():
            history: list/np.array len epochs - value of cost function after every epoch. You know for plotting
         """
         if W is None:
-            W = np.random.rand(X.shape[1], self.num_classes)
+            W = np.zeros((X.shape[1], self.num_classes))
         history = []
-        best_cost = np.inf
         n, d = X.shape
         for epoch in range(epochs):
             permutation = np.random.permutation(np.arange(X.shape[0]))
@@ -97,9 +96,6 @@ class SoftmaxClassifier():
                 cost, grad = self.cost_grad(x, y, W)
                 W = W - lr * grad
             cost, grad = self.cost_grad(X, Y, W)
-            if cost < best_cost:
-                best_cost = cost
-                best_W = W
             history.append(cost)
         self.W = W
         self.history = history
@@ -113,11 +109,7 @@ class SoftmaxClassifier():
         Returns:
            out: float - mean accuracy
         """
-        out = 0
-        ### YOUR CODE HERE
-        out = np.mean(self.predict(X) == Y)
-        ### END CODE
-        return out
+        return np.mean(self.predict(X) == Y)
 
     def predict(self, X):
         """ Compute classifier prediction on each data point in X 
@@ -127,13 +119,7 @@ class SoftmaxClassifier():
         Returns
            out: np.array shape (n, ) - prediction on each data point (number in 0,1,..., num_classes-1)
         """
-        out = None
-
-        ### YOUR CODE HERE
-        out = np.argmax(softmax(X @ self.W), axis=1)
-        ### END CODE
-        return out
-
+        return np.argmax(softmax(X @ self.W), axis=1)
 
 
 def test_encoding():
@@ -169,12 +155,14 @@ def test_grad():
     numerical_grad_check(f, w)
     print('Test Success')
 
+
 def test_fit():
     n, d, k = 10, 3, 5
     X = np.random.rand(n, d)
     y = np.random.randint(k, size=n)
     classifier = SoftmaxClassifier(k)
     classifier.fit(X, y)
+
 
 if __name__ == "__main__":
     test_encoding()

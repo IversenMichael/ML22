@@ -1,0 +1,65 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{amsmath}
+\usepackage[left=2cm, right=2cm]{geometry}
+\title{Hand-in 2}
+\author{Michael Iversen\\
+Student ID: 201505099}
+
+% Default fixed font does not support bold face
+\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{10} % for bold
+\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{10}  % for normal
+
+% Custom colors
+\usepackage{color}
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+
+\usepackage{listings}
+\usepackage{lipsum}
+% Python style for highlighting
+\newcommand\pythonstyle{\lstset{
+		language=Python,
+		basicstyle=\ttm,
+		morekeywords={self},              % Add keywords here
+		keywordstyle=\ttb\color{deepblue},
+		emph={MyClass,__init__},          % Custom highlighting
+		emphstyle=\ttb\color{deepred},    % Custom highlighting style
+		stringstyle=\color{deepgreen},
+		showstringspaces=false
+}}
+
+% Python environment
+\lstnewenvironment{python}[1][]
+{
+	\pythonstyle
+	\lstset{#1}
+}
+{}
+
+
+\begin{document}
+\maketitle
+\section*{PART I: Derivative}
+When implementing the neural network, we apply the following loss function,
+\begin{align*}
+	L(z) = - \sum_{i=1}^k y_i \ln(\mathrm{softmax}(z)_i).
+\end{align*}
+Let $y_j = 1$ be the correct label and $y_i = 0$ for $i \neq j$, then the loss function can be rewritten as,
+\begin{align*}
+	L(z) = - \ln(\mathrm{softmax}(z)_j).
+\end{align*}
+In this section, we determine the derivative of the loss function with respect to all entries of $z$: $\frac{\partial L}{\partial z_i}$.
+We determine the derivative by direct calculation.
+\begin{align*}
+	\frac{\partial L}{\partial z_i} &= \frac{\partial }{\partial z_i} \left[ - \ln \left( \frac{e^{z_j}}{\sum_{a=1}^k e^{z_a}} \right) \right] \\
+	\intertext{Applying the chain rule and quotient rule, we find,}
+	&= - \frac{\sum_{a=1}^k e^{z_a}}{e^{z_j}} \cdot \frac{\delta_{ij} e^{z_j} \big(\sum_{a=1}^k e^{z_a}\big) - e^{z_j} \big(\sum_{a=1}^k \delta_{ia}e^{z_a}\big)}{\big(\sum_{a=1}^k e^{z_a}\big)^2} \\
+	&= - \frac{\sum_{a=1}^k e^{z_a}}{e^{z_j}} \cdot \frac{\delta_{ij} e^{z_j} \big(\sum_{a=1}^k e^{z_a}\big) - e^{z_j} e^{z_i}}{\big(\sum_{a=1}^k e^{z_a}\big)^2} \\
+	&= - \delta_{ij} + \frac{e^{z_i}}{\sum_{a=1}^k e^{z_a}} \\
+	&= - \delta_{ij} + \mathrm{softmax}(z_i).
+\end{align*}
+In total, the derivative is given by the simple expression, $\frac{\partial L}{\partial z_i}  = - \delta_{ij} + \mathrm{softmax}(z_i)$.
+\end{document}

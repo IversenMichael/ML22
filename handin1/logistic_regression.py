@@ -142,5 +142,5 @@ def test_grad():
     
 if __name__ == '__main__':
     test_logistic()
-    #test_cost()
-    #test_grad()
+    test_cost()
+    test_grad()
