@@ -2,31 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c5e825aa-d755-4f38-831d-4a2c4c607f7a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/handin2/h2_util.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/handin2/net_classifier.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/handin2/net_test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/week7/exercise1.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/week7/exercise3.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/week7/exercise4.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/week8/adaboost.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/week8/gradientboost.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/week10/HMM.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/ML22.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ML22.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handin1/handin1.aux" beforeDir="false" afterPath="$PROJECT_DIR$/handin1/handin1.aux" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handin1/handin1.log" beforeDir="false" afterPath="$PROJECT_DIR$/handin1/handin1.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handin1/handin1.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/handin1/handin1.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handin1/handin1.synctex.gz" beforeDir="false" afterPath="$PROJECT_DIR$/handin1/handin1.synctex.gz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handin1/handin1.tex" beforeDir="false" afterPath="$PROJECT_DIR$/handin1/handin1.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handin1/logistic_regression.py" beforeDir="false" afterPath="$PROJECT_DIR$/handin1/logistic_regression.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handin1/logreg_text_cost_per_epoch.png" beforeDir="false" afterPath="$PROJECT_DIR$/handin1/logreg_text_cost_per_epoch.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handin1/results/logreg_text_cost_per_epoch.png" beforeDir="false" afterPath="$PROJECT_DIR$/handin1/results/logreg_text_cost_per_epoch.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handin1/results/softmax_cost_per_epoch.png" beforeDir="false" afterPath="$PROJECT_DIR$/handin1/results/softmax_cost_per_epoch.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handin1/results/softmax_weight_vector.png" beforeDir="false" afterPath="$PROJECT_DIR$/handin1/results/softmax_weight_vector.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handin1/results/softmax_wine_cost_per_epoch.png" beforeDir="false" afterPath="$PROJECT_DIR$/handin1/results/softmax_wine_cost_per_epoch.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handin1/softmax.py" beforeDir="false" afterPath="$PROJECT_DIR$/handin1/softmax.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handin1/softmax_cost_per_epoch.png" beforeDir="false" afterPath="$PROJECT_DIR$/handin1/softmax_cost_per_epoch.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handin1/softmax_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/handin1/softmax_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handin1/softmax_weight_vector.png" beforeDir="false" afterPath="$PROJECT_DIR$/handin1/softmax_weight_vector.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handin1/softmax_wine_cost_per_epoch.png" beforeDir="false" afterPath="$PROJECT_DIR$/handin1/softmax_wine_cost_per_epoch.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +35,7 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/au544901/Documents/GitHub/ML22/week8&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/au544901/Documents/GitHub/ML22/week10&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -67,6 +46,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\au544901\Documents\GitHub\ML22\week10" />
       <recent name="C:\Users\au544901\Documents\GitHub\ML22\week8" />
       <recent name="C:\Users\au544901\Documents\GitHub\ML22\week7" />
       <recent name="C:\Users\au544901\Documents\GitHub\ML22\week6" />
@@ -74,7 +54,7 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="main" type="PythonConfigurationType" factoryName="Python">
+    <configuration name="HMM" type="PythonConfigurationType" factoryName="Python">
       <module name="ML22" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -86,7 +66,7 @@
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/handin2/net_classifier.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/week10/HMM.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
