@@ -2,10 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c5e825aa-d755-4f38-831d-4a2c4c607f7a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/week10/HMM.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/ML22.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ML22.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/handin3/HMM.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/week11/exercise1.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/week11/exercise2.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handin2/handin2.aux" beforeDir="false" afterPath="$PROJECT_DIR$/handin2/handin2.aux" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handin2/handin2.log" beforeDir="false" afterPath="$PROJECT_DIR$/handin2/handin2.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handin2/handin2.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/handin2/handin2.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handin2/handin2.synctex.gz" beforeDir="false" afterPath="$PROJECT_DIR$/handin2/handin2.synctex.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handin2/handin2.tex" beforeDir="false" afterPath="$PROJECT_DIR$/handin2/handin2.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handin2/net_classifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/handin2/net_classifier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handin2/results/epoch_plots.png" beforeDir="false" afterPath="$PROJECT_DIR$/handin2/results/epoch_plots.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/week10/HMM.py" beforeDir="false" afterPath="$PROJECT_DIR$/week10/HMM.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,19 +39,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/au544901/Documents/GitHub/ML22/week10&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/au544901/Documents/GitHub/ML22/week11/exercise1.py",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
-      &quot;Python&quot;
+  "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "Python"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\au544901\Documents\GitHub\ML22\week10" />
@@ -53,8 +61,8 @@
       <recent name="C:\Users\au544901\Documents\GitHub\ML22\week4" />
     </key>
   </component>
-  <component name="RunManager">
-    <configuration name="HMM" type="PythonConfigurationType" factoryName="Python">
+  <component name="RunManager" selected="Python.handin3">
+    <configuration name="handin3" type="PythonConfigurationType" factoryName="Python">
       <module name="ML22" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -62,7 +70,28 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="C:\Users\au544901\Documents\GitHub\ML22\venv\Scripts\python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/handin1" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/handin3" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/handin3/HMM.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="week10" type="PythonConfigurationType" factoryName="Python">
+      <module name="ML22" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\au544901\Documents\GitHub\ML22\venv\Scripts\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/handin2" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
@@ -75,6 +104,10 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Python.week10" />
+      <item itemvalue="Python.handin3" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">

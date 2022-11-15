@@ -1,6 +1,5 @@
-import warnings
-
 import numpy as np
+
 
 def one_in_k_encoding(vec, k):
     """ One-in-k encoding of vector to k classes 
@@ -14,6 +13,7 @@ def one_in_k_encoding(vec, k):
     enc[np.arange(n), vec] = 1
     return enc
 
+
 def loss(X, y, params, c=1e-4):
     W1 = params['W1']
     b1 = params['b1']
@@ -21,6 +21,7 @@ def loss(X, y, params, c=1e-4):
     b2 = params['b2']
     labels = one_in_k_encoding(y, W2.shape[1])
     return - np.sum(labels * np.log(softmax(relu(X @ W1 + b1) @ W2 + b2))) + c * (np.sum(W1 ** 2) + np.sum(W2 ** 2))
+
 
 def softmax(X):
     """ 
@@ -49,11 +50,12 @@ def softmax(X):
     row_max = np.max(X, axis=1, keepdims=True)
     return np.exp(X - row_max - np.log(np.sum(np.exp(X - row_max), axis=1, keepdims=True)))
 
+
 def relu(X):
     """ Compute the relu activation function on every element of the input
     
         Args:
-            x: np.array
+            X: np.array
         Returns:
             res: np.array same shape as x
         Beware of np.max and look at np.maximum
@@ -64,6 +66,7 @@ def relu(X):
 def make_dict(W1, b1, W2, b2):
     """ Trivial helper function """
     return {'W1': W1, 'b1': b1, 'W2': W2, 'b2': b2}
+
 
 def get_init_params(input_dim, hidden_size, output_size):
     """ Initializer function using Xavier/he et al Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet Classification
@@ -151,7 +154,6 @@ class NetClassifier:
         W2 = params['W2']
         b2 = params['b2']
         labels = one_in_k_encoding(y, W2.shape[1])
-
         # ----------- FORWARD PASS ----------- #
         # Cost
         X1_W1 = X @ W1
@@ -159,8 +161,7 @@ class NetClassifier:
         X2 = relu(X1_W1_b1)
         X2_W2 = X2 @ W2
         z = X2_W2 + b2
-        cost = - np.ma.sum(labels * np.ma.log(softmax(z)))
-
+        cost = - np.sum(labels * np.log(softmax(z)))
         # Weight decay
         W1_squared = W1 ** 2
         W2_squared = W2 ** 2
@@ -172,7 +173,6 @@ class NetClassifier:
 
         #  ----------- BACKWARD PASS ----------- #
         # Cost
-        # d_cost = d_L
         d_z = - labels + softmax(z)
         d_X2_W2 = d_z
         d_b2 = np.sum(d_z, axis=0, keepdims=True)
@@ -190,7 +190,6 @@ class NetClassifier:
 
         d_w1 = d_W1 + d_W1_weight
         d_w2 = d_W2 + d_W2_weight
-
         return L, {'d_w1': d_w1, 'd_b1': d_b1, 'd_w2': d_w2, 'd_b2': d_b2}
         
     def fit(self, X_train, y_train, X_val, y_val, params, batch_size=32, lr=0.1, c=1e-4, epochs=30):
@@ -326,27 +325,7 @@ def test_grad_approx():
 
 
 def main():
-    import warnings
-    from matplotlib import pyplot as plt
-    warnings.simplefilter('error')
-    #np.random.seed(0)
-    n = 100
-    d = 1000
-    hidden_size = 10
-    K = 4
-
-    nc = NetClassifier()
-    params = get_init_params(d, hidden_size, K)
-    X = np.random.randn(n, d)
-    Y = np.random.randint(K, size=n)
-    hist = nc.fit(X, Y, X, Y, params)
-
-    fig, ax = plt.subplots()
-    ax.grid()
-    ax.plot(np.arange(len(hist['train_loss'])), hist['train_loss'], 'k.')
-    ax.plot(np.arange(len(hist['val_loss'])), hist['val_loss'], 'b.')
-    plt.show()
-
+    pass
 
 
 if __name__ == '__main__':

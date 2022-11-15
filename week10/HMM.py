@@ -254,5 +254,6 @@ def Viterbi():
     print(z_viterbi)
     print(z_viterbi_log)
 
+
 if __name__ == '__main__':
     Viterbi()
