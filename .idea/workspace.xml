@@ -2,18 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c5e825aa-d755-4f38-831d-4a2c4c607f7a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/handin3/HMM.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/week11/exercise1.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/week11/exercise2.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handin2/handin2.aux" beforeDir="false" afterPath="$PROJECT_DIR$/handin2/handin2.aux" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handin2/handin2.log" beforeDir="false" afterPath="$PROJECT_DIR$/handin2/handin2.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handin2/handin2.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/handin2/handin2.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handin2/handin2.synctex.gz" beforeDir="false" afterPath="$PROJECT_DIR$/handin2/handin2.synctex.gz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handin2/handin2.tex" beforeDir="false" afterPath="$PROJECT_DIR$/handin2/handin2.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handin2/net_classifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/handin2/net_classifier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handin2/results/epoch_plots.png" beforeDir="false" afterPath="$PROJECT_DIR$/handin2/results/epoch_plots.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/week10/HMM.py" beforeDir="false" afterPath="$PROJECT_DIR$/week10/HMM.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handin3/HMM.py" beforeDir="false" afterPath="$PROJECT_DIR$/handin3/HMM.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,19 +29,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/au544901/Documents/GitHub/ML22/week11/exercise1.py",
-    "settings.editor.selected.configurable": "preferences.lookFeel"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/au544901/Documents/GitHub/ML22/week11/exercise1.py&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
   },
-  "keyToStringList": {
-    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
-      "Python"
+  &quot;keyToStringList&quot;: {
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;Python&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\au544901\Documents\GitHub\ML22\week10" />
