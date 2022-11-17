@@ -75,7 +75,7 @@ def str_to_list(z: str) -> list[int, ...]:
             z_list.append(0)
             n += 1
         elif z[n] == 'C':
-            if 'N' in z[n-3: n]:
+            if 'N' in z[n - 3: n]:
                 z_list.append(1)
             elif 'N' in z[n + 1: n + 4]:
                 z_list.append(3)
@@ -96,17 +96,14 @@ def str_to_list(z: str) -> list[int, ...]:
 
 
 def list_to_str(z: list[int, ...]) -> str:
-    z_str = ''
-    for value in z:
-        if value == 0:
-            z_str = z_str + 'N'
-        elif value in [1, 2, 3]:
-            z_str = z_str + 'CCC'
-        elif value in [4, 5, 6]:
-            z_str = z_str + 'RRR'
+    def decoding(i: int) -> str:
+        if i == 0:
+            return 'N'
+        elif i == 1 or i == 2 or i == 3:
+            return 'CCC'
         else:
-            raise NotImplementedError
-    return z_str
+            return 'RRR'
+    return ''.join(map(decoding, z))
 
 
 def get_param_diff(transition1: list[list[float, ...], ...], emission1: list[dict, ...], transition2: list[list[float, ...], ...], emission2: list[dict, ...]) -> float:
@@ -142,9 +139,11 @@ def training_by_counting(K: int, letters: list[str, ...], d: dict, x: str, z: li
                 for _ in range(K - 1)]
 
     n = 0
-    while n < len(z):  # Count
-        emission[z[n]][x[n: n + d[z[n]]]] += 1
-        n += d[z[n]]
+    for i in range(len(z)):     # Count
+        emission[z[i]][x[n: n + d[z[i]]]] += 1
+        n += d[z[i]]
+    if n != len(x):
+        raise NotImplementedError
 
     for i in range(K):  # Normalize
         S = sum(emission[i].values())
@@ -177,13 +176,13 @@ def plot_solution(z1: str, z2: str):
 
 
 def get_string_acc(s1: str, s2: str, prob: bool = True) -> float:
-    diff = 0.0
-    for a, b in zip(s1, s2, strict=True):
+    acc = 0.0
+    for a, b in zip(s1, s2):
         if a == b:
-            diff += 1.0
+            acc += 1
     if prob:
-        diff /= len(s1)
-    return diff
+        acc /= len(s1)
+    return acc
 
 
 class HMM:
@@ -271,12 +270,14 @@ class HMM:
             n -= self.d[k_max]  # Update n consistent with the chosen path
         return zstar[::-1]  # zstar was created in reverse direction (e.g. by adding the last element first).
 
-    def Viterbi_training(self, x: str, ann: None | str = None, N_iter: int = 10 ** 2, tol: float = 1e-6) \
+    def Viterbi_training(self, x: str, ann: None | str = None, N_iter: int = 10, tol: float = 1e-6) \
             -> tuple[list[float, ...], list[float, ...]] | list[float, ...]:
         n = 0
         param_diffs = [float('inf')]
         accs = []
+        print(f'Starting Viterbi training')
         while n < N_iter and param_diffs[-1] > tol:
+            print(f'iteration: {n}')
             omega = self.get_omega(x)
             zstar = self.get_zstar(omega)
             new_transition, new_emission = training_by_counting(K=self.K, letters=self.letters, d=self.d, x=x, z=zstar)
@@ -290,19 +291,90 @@ class HMM:
         return param_diffs, accs
 
 
-def profile_me():
+def cross_validation():
+    for pop_idx in range(5):
+        L = list(range(1, 6))
+        i_val = L.pop(pop_idx)
+        x = ''
+        z = ''
+        print('Reading files')
+        for i in L:
+            x += read_fasta_file(f'genome{i}.fa')[f'genome{i}']
+            z += read_fasta_file(f'true-ann{i}.fa')[f'true-ann{i}']
+
+        x_val = read_fasta_file(f'genome{i_val}.fa')[f'genome{i_val}']
+        z_val = read_fasta_file(f'true-ann{i_val}.fa')[f'true-ann{i_val}']
+
+        print('Fitting model')
+        hmm = HMM(init_mode='from_counting', x=x + x_val, z=z + z_val)
+
+        # param_diffs, accs = hmm.Viterbi_training(x + x_val)
+        # print(f'{param_diffs=}')
+
+        print('Making prediction')
+        omega = hmm.get_omega(x_val)
+        zstar = hmm.get_zstar(omega)
+        z_str = list_to_str(zstar)
+        print(get_string_acc(z_str, z_val))
+        with open(f'pred-ann{i_val}.txt', 'w') as file:
+            file.write(z_str)
+    return
+
+
+def predict_new():
     import numpy as np
-    np.set_printoptions(linewidth=300)
-    x = read_fasta_file('genome2.fa')['genome2']
-    ann = read_fasta_file('true-ann2.fa')['true-ann2']
-    hmm = HMM(init_mode='from_counting', x=x, z=ann)
-    # hmm.Viterbi_training(x, ann, N_iter=1)
-    omega = hmm.get_omega(x)
-    zstar = hmm.get_zstar(omega)
-    print(get_string_acc(list_to_str(zstar), ann))
+    import csv
+    x_known = ''
+    z_known = ''
+    print('Reading files')
+    for i in range(1, 6):
+        x_known += read_fasta_file(f'genome{i}.fa')[f'genome{i}']
+        z_known += read_fasta_file(f'true-ann{i}.fa')[f'true-ann{i}']
+
+    x_unknown = []
+    for i in range(6, 11):
+        x_unknown.append(read_fasta_file(f'genome{i}.fa')[f'genome{i}'])
+
+    print('Training model')
+    hmm = HMM(init_mode='from_counting', x=x_known, z=z_known)
+    # hmm.Viterbi_training(x_known + ''.join(x_unknown))
+
+    np.savetxt('transition.txt', np.array(hmm.transition))
+    for k in range(hmm.K):
+        w = csv.writer(open(f"emission{k}.csv", "w"))
+        for key, val in hmm.emission[k].items():
+            w.writerow([key, val])
+
+    print('Making predictions')
+    for i in range(6, 11):
+        print(f'{i=}')
+        omega = hmm.get_omega(x_unknown[i - 6])
+        zstar = hmm.get_zstar(omega)
+        z_str = list_to_str(zstar)
+        with open(f'pred-ann{i}.fa', 'w') as file:
+            file.write(z_str)
+    return
+
+
+def concatenate_files():
+    names = [f'pred-ann{i}' for i in range(6, 11)]
+    z = []
+    for i in range(6, 11):
+        with open(f'pred-ann{i}.fa') as file:
+            z.append(file.read())
+
+    output = ''
+    for i in range(5):
+        output += ">" + names[i] + "\n" + z[i] + "\n"
+    with open(f'pred-ann.fa', 'w') as file:
+        file.write(output)
 
 
 def main():
+    predict_new()
+
+
+def profile():
     import cProfile
     import pstats
     from pstats import SortKey

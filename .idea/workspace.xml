@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c5e825aa-d755-4f38-831d-4a2c4c607f7a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/handin3/compare_anns.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/handin3/HMM.py" beforeDir="false" afterPath="$PROJECT_DIR$/handin3/HMM.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handin3/restats" beforeDir="false" afterPath="$PROJECT_DIR$/handin3/restats" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,6 +54,27 @@
     </key>
   </component>
   <component name="RunManager" selected="Python.handin3">
+    <configuration name="compare_anns" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="ML22" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/handin3" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/handin3/compare_anns.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="handin3" type="PythonConfigurationType" factoryName="Python">
       <module name="ML22" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -96,7 +120,13 @@
     <list>
       <item itemvalue="Python.week10" />
       <item itemvalue="Python.handin3" />
+      <item itemvalue="Python.compare_anns" />
     </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.compare_anns" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
