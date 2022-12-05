@@ -2,10 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c5e825aa-d755-4f38-831d-4a2c4c607f7a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/handin3/compare_anns.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/week13/exercise1.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/handin3/HMM.py" beforeDir="false" afterPath="$PROJECT_DIR$/handin3/HMM.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handin3/restats" beforeDir="false" afterPath="$PROJECT_DIR$/handin3/restats" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handin3/handin3.aux" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/handin3/handin3.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/handin3/handin3.tex" beforeDir="false" afterPath="$PROJECT_DIR$/handin3/handin3.tex" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,7 +37,7 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/au544901/Documents/GitHub/ML22/week11/exercise1.py&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/au544901/Documents/GitHub/ML22&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
   },
   &quot;keyToStringList&quot;: {

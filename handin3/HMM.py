@@ -356,6 +356,38 @@ def predict_new():
     return
 
 
+def print_params():
+    import numpy as np
+    import csv
+    x_known = ''
+    z_known = ''
+    print('Reading files')
+    path = 'C:\\Users\\au544901\\Documents\\GitHub\\ML22\\handin3\\'
+    for i in range(1, 6):
+        x_known += read_fasta_file(path + f'genome{i}.fa')[f'genome{i}']
+        z_known += read_fasta_file(path + f'true-ann{i}.fa')[f'true-ann{i}']
+
+    print('Training model')
+    hmm = HMM(init_mode='from_counting', x=x_known, z=z_known)
+
+    print('----------------------- TRANSITION PROBABILITIES -----------------------')
+    for row in hmm.transition:
+        for col in row:
+            print(f'{col:0.3f}', end='\t')
+        print()
+
+    print('----------------------- EMISSION PROBABILITIES -----------------------')
+    for dictionary in hmm.emission:
+        counter = 0
+        for key, value in dictionary.items():
+            if value != 0:
+                if counter % 2 == 0:
+                    print()
+                counter += 1
+                print(f'{key}: {value:0.3f}', end='\t')
+        print()
+
+
 def concatenate_files():
     names = [f'pred-ann{i}' for i in range(6, 11)]
     z = []
@@ -371,7 +403,9 @@ def concatenate_files():
 
 
 def main():
-    predict_new()
+    ...
+    # predict_new()
+    print_params()
 
 
 def profile():
